@@ -21,7 +21,7 @@ requirements:
     - ruby
   run:
     - {{ pin_compatible('ruby', max_pin='x.x') }}
-    - rb-kramdown ~=2.0
+    - rb-kramdown >=2.0,<3
 
 test:
   commands:
