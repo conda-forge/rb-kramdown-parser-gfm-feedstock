@@ -11,17 +11,16 @@ source:
 
 build:
   noarch: generic
-  number: 0
+  number: 1
   script:
     - gem install --norc -l -V --ignore-dependencies {{ name }}-{{ version }}.gem
     - gem unpack {{ name }}-{{ version }}.gem
-  skip: {{ win }}
 
 requirements:
   host:
     - ruby
   run:
-    - ruby
+    - {{ pin_compatible('ruby', max_pin='x.x') }}
     - rb-kramdown >=2.0,<3
 
 test:
@@ -29,13 +28,13 @@ test:
     - ruby -r {{ name }} -e 'exit 0'
 
 about:
-  home: https://rubygems.org/gems/{{ name }}
+  home: https://rubygems.org/gems/kramdown-parser-gfm
   license: MIT
   license_family: MIT
-  license_file: {{ name }}-{{ version }}/COPYING
+  license_file: COPYING
   summary: kramdown-parser-gfm provides a kramdown parser for the GFM dialect of Markdown
 
-  doc_url: https://www.rubydoc.info/gems/{{ name }}
+  doc_url: https://www.rubydoc.info/gems/kramdown-parser-gfm
   dev_url: https://github.com/kramdown/parser-gfm
 
 extra:
